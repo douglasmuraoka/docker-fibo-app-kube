@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    - port: 3050 # This is the port that other Pods can use to communicate with the Pods that uses this service
+      targetPort: 3000 # This is the Pod port that we want to be exposed
+      nodePort: 31515 # This is the port that the "targetPort" will be mapped to, to outside applications
+  selector: # This service will be applied to anyone who have this key and value as label
+    component: web
