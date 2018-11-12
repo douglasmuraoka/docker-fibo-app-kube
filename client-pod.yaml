@@ -1,4 +1,9 @@
 apiVersion: v1
+
+# The Kind and name of name from metadata are the only identifiers for this configuration file.
+# If we wish to make an update to a configuration file, we can change everything, except both identifiers.
+# If we change the identifiers, Kubernetes will think this is a new configuration file and will create
+# a brand new object into the cluster.
 kind: Pod
 metadata:
   name: client-pod
@@ -7,6 +12,6 @@ metadata:
 spec:
   containers:
     - name: client
-      image: douglasmuraoka/docker-fibo-app-client
+      image: douglasmuraoka/docker-fibo-app-worker
       ports:
         - containerPort: 3000
